@@ -1,6 +1,6 @@
-package com.caesar_84.vcardconverter.core.Exporter;
+package com.caesar_84.vcardconverter.core.exporters;
 
-import com.caesar_84.vcardconverter.core.Aux.ExportFormat;
+import com.caesar_84.vcardconverter.core.aux_classes.ExportFormat;
 
 public class ExporterFactory {
     private ExporterFactory() {}

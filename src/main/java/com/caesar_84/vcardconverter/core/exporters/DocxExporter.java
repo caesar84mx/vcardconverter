@@ -1,4 +1,4 @@
-package com.caesar_84.vcardconverter.core.Exporter;
+package com.caesar_84.vcardconverter.core.exporters;
 
 import org.apache.poi.xwpf.usermodel.*;
 
