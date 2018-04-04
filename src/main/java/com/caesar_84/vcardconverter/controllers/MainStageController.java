@@ -50,9 +50,8 @@ public class MainStageController {
         if (vcfFile != null) {
             main.setVcardFile(vcfFile);
             fileNameLabel.setText(vcfFile.getAbsolutePath());
-            RadioButton selected = (RadioButton) toggleGroup.getSelectedToggle();
             exportButton.setDisable(false);
-            statusLabel.setText("Ready to export: " + selected.getText());
+            statusLabel.setText("Ready to export");
         }
     }
 
