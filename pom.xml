@@ -27,23 +27,6 @@
                     <vendor>caesar_84</vendor>
                     <mainClass>com.caesar_84.vcardconverter.Main</mainClass>
                 </configuration>
-                <executions>
-                    <execution>
-                        <!-- required before build-native -->
-                        <id>create-jfxjar</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>build-jar</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>create-native</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>build-native</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
