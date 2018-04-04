@@ -14,7 +14,7 @@ Build the project with Maven:
 to have a jar executable, or:
 `mvn jfx:native`
 to have an OS native application format.
-You can find your built application in your built application will be in `${project.root}/target/jfx` directory.
+You can find your built application in `${project.root}/target/jfx` directory.
 
 For now there are two formats available: .txt and .docx. Later, a new functionality may be added.<br>
 Anyway, you are free to improve it.<br>
