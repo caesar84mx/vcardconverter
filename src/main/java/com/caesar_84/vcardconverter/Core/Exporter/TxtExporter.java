@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class TxtExporter implements Exporter {
+class TxtExporter implements Exporter {
 
     @Override
     public void export(Map<String, Set<String>> contactList, File to) {

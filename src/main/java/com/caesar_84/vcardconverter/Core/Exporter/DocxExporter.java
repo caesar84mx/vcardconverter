@@ -9,7 +9,7 @@ import java.math.BigInteger;
 import java.util.Map;
 import java.util.Set;
 
-public class DocxExporter implements Exporter {
+class DocxExporter implements Exporter {
     @Override
     public void export(Map<String, Set<String>> contactList, File to) {
         try (FileOutputStream out = new FileOutputStream(to)) {
