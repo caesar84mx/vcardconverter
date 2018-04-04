@@ -11,7 +11,7 @@ where `<full_path_to_vcf>` is a full path to a vcard file and `<export_format>` 
 
 Build the project with Maven:
 `mvn jfx:jar`
-to have a jar executable. In this case, or:
+to have a jar executable, or:
 `mvn jfx:native`
 to have an OS native application format.
 You can find your built application in your built application will be in `${project.root}/target/jfx` directory.
