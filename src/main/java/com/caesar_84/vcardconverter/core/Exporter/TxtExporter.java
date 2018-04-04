@@ -1,4 +1,4 @@
-package com.caesar_84.vcardconverter.Core.Exporter;
+package com.caesar_84.vcardconverter.core.Exporter;
 
 import java.io.File;
 import java.io.IOException;

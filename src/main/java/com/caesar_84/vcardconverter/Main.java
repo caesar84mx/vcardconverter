@@ -1,9 +1,9 @@
 package com.caesar_84.vcardconverter;
 
-import com.caesar_84.vcardconverter.Core.Aux.ExportFormat;
-import com.caesar_84.vcardconverter.Core.Exporter.Exporter;
-import com.caesar_84.vcardconverter.Core.Exporter.ExporterFactory;
-import com.caesar_84.vcardconverter.Core.VcardParser;
+import com.caesar_84.vcardconverter.core.Aux.ExportFormat;
+import com.caesar_84.vcardconverter.core.Exporter.Exporter;
+import com.caesar_84.vcardconverter.core.Exporter.ExporterFactory;
+import com.caesar_84.vcardconverter.core.VcardParser;
 
 import java.io.File;
 import java.nio.file.Files;

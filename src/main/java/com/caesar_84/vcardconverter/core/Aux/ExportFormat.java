@@ -1,4 +1,4 @@
-package com.caesar_84.vcardconverter.Core.Aux;
+package com.caesar_84.vcardconverter.core.Aux;
 
 public enum ExportFormat {
     DOCX,

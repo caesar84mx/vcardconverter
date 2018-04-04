@@ -1,4 +1,4 @@
-package com.caesar_84.vcardconverter.Core;
+package com.caesar_84.vcardconverter.core;
 
 import ezvcard.Ezvcard;
 import ezvcard.VCard;
