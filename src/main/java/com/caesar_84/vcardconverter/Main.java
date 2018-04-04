@@ -1,11 +1,12 @@
 package com.caesar_84.vcardconverter;
 
+import com.caesar_84.vcardconverter.core.VcardParser;
 import com.caesar_84.vcardconverter.core.aux_classes.ExportFormat;
 import com.caesar_84.vcardconverter.core.exporters.Exporter;
 import com.caesar_84.vcardconverter.core.exporters.ExporterFactory;
-import com.caesar_84.vcardconverter.core.VcardParser;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 
 public class Main {
@@ -26,17 +27,22 @@ public class Main {
             Exporter exporter = ExporterFactory.getExporter(ExportFormat.valueOf(args[1].toUpperCase()));
             VcardParser parser = new VcardParser();
             File fileToExport = getFileToExport(new File(args[0]), ExportFormat.valueOf(args[1].toUpperCase()));
-            exporter.export(parser.getContacts(new File(args[0])), fileToExport);
+
+            try {
+                exporter.export(parser.getContacts(new File(args[0])), fileToExport);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             System.out.println("Done");
         } else {
-            System.out.println("Wrong parameters number: please, specify full path to a vcard and output format (txt or docx)");
+            WindowModeMain.runInWindow(args);
         }
     }
 
-    private static File getFileToExport(File from, ExportFormat format) {
+    public static File getFileToExport(File from, ExportFormat format) {
         String parentTo = from.getParent();
         String fileTo = from.getName().substring(0, from.getName().lastIndexOf(".")) + "." + format.toString().toLowerCase();
-        System.out.println(parentTo + File.separator + fileTo);
         return new File(parentTo + File.separator + fileTo);
     }
 }

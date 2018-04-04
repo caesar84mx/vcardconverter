@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 class TxtExporter implements Exporter {
 
     @Override
-    public void export(Map<String, Set<String>> contactList, File to) {
+    public void export(Map<String, Set<String>> contactList, File to) throws IOException {
         Path file = Paths.get(to.toURI());
 
         List<String> lines = contactList.entrySet().stream()
@@ -26,10 +26,6 @@ class TxtExporter implements Exporter {
                 })
                 .collect(Collectors.toList());
 
-        try {
-            Files.write(file, lines, Charset.forName("UTF-8"));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        Files.write(file, lines, Charset.forName("UTF-8"));
     }
 }

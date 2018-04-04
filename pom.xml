@@ -6,45 +6,42 @@
 
     <groupId>com.caesar_84</groupId>
     <artifactId>vcard-converter</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-ALPHA</version>
     <packaging>jar</packaging>
-
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
+                <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <mainClass>com.caesar_84.vcardconverter.Main</mainClass>
-                            <classpathPrefix>lib/</classpathPrefix>
-                        </manifest>
-                    </archive>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.8</version>
+                <groupId>com.zenjava</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>8.8.3</version>
+                <configuration>
+                    <vendor>caesar_84</vendor>
+                    <mainClass>com.caesar_84.vcardconverter.Main</mainClass>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>copy-dependencies</id>
+                        <!-- required before build-native -->
+                        <id>create-jfxjar</id>
                         <phase>package</phase>
                         <goals>
-                            <goal>copy-dependencies</goal>
+                            <goal>build-jar</goal>
                         </goals>
-                        <configuration>
-                            <includeScope>runtime</includeScope>
-                            <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>create-native</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build-native</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

@@ -11,7 +11,7 @@ import java.util.Set;
 
 class DocxExporter implements Exporter {
     @Override
-    public void export(Map<String, Set<String>> contactList, File to) {
+    public void export(Map<String, Set<String>> contactList, File to) throws IOException {
         try (FileOutputStream out = new FileOutputStream(to)) {
             XWPFDocument document = new XWPFDocument();
 
@@ -40,8 +40,6 @@ class DocxExporter implements Exporter {
             });
 
             document.write(out);
-        } catch (IOException ex) {
-            ex.printStackTrace();
         }
     }
 }

@@ -15,15 +15,12 @@ import java.util.stream.Collectors;
 public class VcardParser {
     private final Map<String, Set<String>> contacts = new TreeMap<>();
 
-    public Map<String, Set<String>> getContacts(File file) {
-        try {
-            List<VCard> cards = Ezvcard.parse(file).all();
-            cards.forEach(vcard -> contacts.put(vcard.getFormattedName().getValue(), vcard.getTelephoneNumbers().stream()
-            .map(Telephone::getText)
-            .collect(Collectors.toSet())));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+    public Map<String, Set<String>> getContacts(File file) throws IOException {
+        List<VCard> cards = Ezvcard.parse(file).all();
+        cards.forEach(vcard -> contacts.put(vcard.getFormattedName().getValue(), vcard.getTelephoneNumbers().stream()
+                .map(Telephone::getText)
+                .collect(Collectors.toSet())));
+
         return contacts;
     }
 }
