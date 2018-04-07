@@ -1,4 +1,4 @@
-**Console Vcard Converter**<br>
+**Vcard Converter**<br>
 This is a vcard converter, designed to convert Android contact list to a readable format.<br>
 _Note:_ For now, it only converts a contact's full name and its phones list.
 <br>
