@@ -3,7 +3,6 @@ package com.caesar_84.vcardconverter;
 import com.caesar_84.vcardconverter.controllers.MainStageController;
 import com.caesar_84.vcardconverter.core.VcardParser;
 import com.caesar_84.vcardconverter.core.aux_classes.ExportFormat;
-import com.caesar_84.vcardconverter.core.exporters.Exporter;
 import com.caesar_84.vcardconverter.core.exporters.ExporterFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +15,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class WindowModeMain extends Application {
-    private static final String APP_VERSION = "1.0";
+    private static final String APP_VERSION = "1.1";
     private static final String APP_NAME = "Vcard Converter " + APP_VERSION;
 
     private File vcardFile;
@@ -33,8 +32,8 @@ public class WindowModeMain extends Application {
     }
 
     private void initApp() throws Exception {
-        FXMLLoader loader = new FXMLLoader();
-        AnchorPane mainLayout = loader.load(getClass().getClassLoader().getResourceAsStream("fxml/MainStage.fxml"));
+        var loader = new FXMLLoader();
+        var mainLayout = (AnchorPane) loader.load(getClass().getClassLoader().getResourceAsStream("fxml/MainStage.fxml"));
 
         Scene scene = new Scene(mainLayout);
         primaryStage.setScene(scene);
@@ -42,16 +41,16 @@ public class WindowModeMain extends Application {
         primaryStage.setOnCloseRequest(event -> System.exit(0));
         primaryStage.setResizable(false);
 
-        MainStageController mainStageController = loader.getController();
+        var mainStageController = (MainStageController) loader.getController();
         mainStageController.setMain(this);
 
         primaryStage.show();
     }
 
     public boolean export(ExportFormat format) {
-        Exporter exporter = ExporterFactory.getExporter(format);
-        VcardParser parser = new VcardParser();
-        File exportTo = Main.getFileToExport(vcardFile, format);
+        var exporter = ExporterFactory.getExporter(format);
+        var parser = new VcardParser();
+        var exportTo = Main.getFileToExport(vcardFile, format);
         try {
             exporter.export(parser.getContacts(vcardFile), exportTo);
         } catch (IOException e) {

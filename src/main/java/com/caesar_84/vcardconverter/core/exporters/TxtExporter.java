@@ -15,9 +15,9 @@ class TxtExporter implements Exporter {
 
     @Override
     public void export(Map<String, Set<String>> contactList, File to) throws IOException {
-        Path file = Paths.get(to.toURI());
+        var file = Paths.get(to.toURI());
 
-        List<String> lines = contactList.entrySet().stream()
+        var lines = contactList.entrySet().stream()
                 .map(entry -> {
                     String result = entry.getKey();
                     result += ":\n";

@@ -2,7 +2,6 @@ package com.caesar_84.vcardconverter;
 
 import com.caesar_84.vcardconverter.core.VcardParser;
 import com.caesar_84.vcardconverter.core.aux_classes.ExportFormat;
-import com.caesar_84.vcardconverter.core.exporters.Exporter;
 import com.caesar_84.vcardconverter.core.exporters.ExporterFactory;
 
 import java.io.File;
@@ -24,9 +23,9 @@ public class Main {
                 return;
             }
 
-            Exporter exporter = ExporterFactory.getExporter(ExportFormat.valueOf(args[1].toUpperCase()));
-            VcardParser parser = new VcardParser();
-            File fileToExport = getFileToExport(new File(args[0]), ExportFormat.valueOf(args[1].toUpperCase()));
+            var exporter = ExporterFactory.getExporter(ExportFormat.valueOf(args[1].toUpperCase()));
+            var parser = new VcardParser();
+            var fileToExport = getFileToExport(new File(args[0]), ExportFormat.valueOf(args[1].toUpperCase()));
 
             try {
                 exporter.export(parser.getContacts(new File(args[0])), fileToExport);
@@ -41,8 +40,8 @@ public class Main {
     }
 
     public static File getFileToExport(File from, ExportFormat format) {
-        String parentTo = from.getParent();
-        String fileTo = from.getName().substring(0, from.getName().lastIndexOf(".")) + "." + format.toString().toLowerCase();
+        var parentTo = from.getParent();
+        var fileTo = from.getName().substring(0, from.getName().lastIndexOf(".")) + "." + format.toString().toLowerCase();
         return new File(parentTo + File.separator + fileTo);
     }
 }

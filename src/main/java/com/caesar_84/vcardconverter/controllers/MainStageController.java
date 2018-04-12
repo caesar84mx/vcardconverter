@@ -39,13 +39,13 @@ public class MainStageController {
 
     @FXML
     private void handleChooseFile() {
-        FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter(
+        var fileChooser = new FileChooser();
+        var extensionFilter = new FileChooser.ExtensionFilter(
                 "Vcard files (*.vcf)", "*.vcf"
         );
         fileChooser.getExtensionFilters().add(extensionFilter);
 
-        File vcfFile = fileChooser.showOpenDialog(main.getPrimaryStage());
+        var vcfFile = fileChooser.showOpenDialog(main.getPrimaryStage());
 
         if (vcfFile != null) {
             main.setVcardFile(vcfFile);
@@ -57,7 +57,7 @@ public class MainStageController {
 
     @FXML
     private void handleExport() {
-        RadioButton selected = (RadioButton) toggleGroup.getSelectedToggle();
+        var selected = (RadioButton) toggleGroup.getSelectedToggle();
         if (main.export(ExportFormat.valueOf(selected.getText().toUpperCase()))) {
             statusLabel.setText("Done");
         } else {

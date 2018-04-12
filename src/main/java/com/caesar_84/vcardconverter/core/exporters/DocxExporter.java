@@ -1,6 +1,6 @@
 package com.caesar_84.vcardconverter.core.exporters;
 
-import org.apache.poi.xwpf.usermodel.*;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -13,28 +13,28 @@ class DocxExporter implements Exporter {
     @Override
     public void export(Map<String, Set<String>> contactList, File to) throws IOException {
         try (FileOutputStream out = new FileOutputStream(to)) {
-            XWPFDocument document = new XWPFDocument();
+            var document = new XWPFDocument();
 
             //create paragraph
-            XWPFParagraph paragraph = document.createParagraph();
-            XWPFRun run = paragraph.createRun();
+            var paragraph = document.createParagraph();
+            var run = paragraph.createRun();
             run.setBold(true);
             run.setFontSize(14);
             run.setText("Contacts:");
 
             // create table
-            XWPFTable table = document.createTable(1, 2);
+            var table = document.createTable(1, 2);
             table.getCTTbl().addNewTblGrid().addNewGridCol().setW(BigInteger.valueOf(5000));
             table.getCTTbl().getTblGrid().addNewGridCol().setW(BigInteger.valueOf(5000));
 
             //create header row
-            XWPFTableRow headerRow = table.getRow(0);
+            var headerRow = table.getRow(0);
             headerRow.getCell(0).setText("Name");
             headerRow.getCell(1).setText("Phone");
 
             //export contacts to table
             contactList.forEach((name, phones) -> {
-                XWPFTableRow row = table.createRow();
+                var row = table.createRow();
                 row.getCell(0).setText(name);
                 row.getCell(1).setText(String.join("\n", phones));
             });
